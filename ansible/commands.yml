@@ -1,0 +1,24 @@
+---
+- name: Create file in home directory
+  hosts: all
+  remote_user: ubuntu
+
+  tasks:
+  - name: Create the file
+    become: true
+    become_user: root
+    ansible.builtin.file:
+      path: /home/ubuntu/test.txt
+      owner: root
+#      group: ubuntu
+#      mode: '1777'
+#      state: touch
+#  - name: How to revert
+#    become: true
+#    become_user: root
+#    ansible.builtin.file:
+#      path: /home/ubuntu/test.txt
+#      owner: root
+#      group: ubuntu
+#      mode: '1777'
+#      state: touch
