@@ -1,0 +1,27 @@
+name: Run Ansible Playbook
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-ansible-controller:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install Ansible
+      run: |
+        sudo apt install ansible tree
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Run Playbook Validity
+      uses: dawidd6/action-ansible-playbook@v2
+      with:
+        playbook: commands.yml
+        directory: ./ansible/
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        inventory: |
+          [all]
+          ec2-54-244-81-92.us-west-2.compute.amazonaws.com
+
