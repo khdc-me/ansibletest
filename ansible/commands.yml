@@ -4,18 +4,18 @@
   remote_user: ubuntu
 
   tasks:
-#  - name: Create the file
-#    become: true
-#    become_user: root
-#    ansible.builtin.file:
-#      path: /home/ubuntu/test.txt
-#      state: touch
-#      owner: root
-#      group: ubuntu
-#      mode: '1777'
-  - name: Revert changes
+  - name: Create the file
     become: true
     become_user: root
     ansible.builtin.file:
       path: /home/ubuntu/test.txt
-      state: absent
+      state: touch
+#      owner: root
+#      group: ubuntu
+#      mode: '1777'
+#  - name: Revert changes
+#    become: true
+#    become_user: root
+#    ansible.builtin.file:
+#      path: /home/ubuntu/test.txt
+#      state: absent
