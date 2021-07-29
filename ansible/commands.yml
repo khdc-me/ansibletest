@@ -9,16 +9,13 @@
     become_user: root
     ansible.builtin.file:
       path: /home/ubuntu/test.txt
-      owner: root
+      state: touch
+#      owner: root
 #      group: ubuntu
 #      mode: '1777'
-#      state: touch
-#  - name: How to revert
+#  - name: Revert changes
 #    become: true
 #    become_user: root
 #    ansible.builtin.file:
 #      path: /home/ubuntu/test.txt
-#      owner: root
-#      group: ubuntu
-#      mode: '1777'
-#      state: touch
+#      state: absent
